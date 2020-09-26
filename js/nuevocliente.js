@@ -7,6 +7,17 @@
     formulario.addEventListener('submit', validarCliente);
   });
 
+  function conectarDB() {
+    const abrirConexion = window.indexedDB.open('CRM', 1);
+
+    abrirConexion.onerror = function () {
+      console.log('Hubo un error');
+    };
+    abrirConexion.onsuccess = function () {
+      DB = abrirConexion.result;
+    };
+  }
+
   function validarCliente(e) {
     e.preventDefault();
     //Leer inputs
